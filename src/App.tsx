@@ -1,9 +1,9 @@
 import Button from "./components/Button";
-import InputField from "./components/InputField";
+import LoginView from "./views/LoginView";
 import ProjectView from "./views/ProjectView";
 
 function App() {
-  return <ProjectView />;
+  return <LoginView />;
 }
 
 export default App;

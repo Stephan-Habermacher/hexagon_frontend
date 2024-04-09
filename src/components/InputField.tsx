@@ -1,15 +1,21 @@
 import React from "react";
 
-const InputField = ({ text }: { text: string }) => {
+const InputField = ({
+  text,
+  isPassword,
+}: {
+  text: string;
+  isPassword?: boolean;
+}) => {
   return (
-    <label className="text-base">
-      {text}
+    <>
+      <label className="text-base justify-start">{text}</label>
       <input
-        type="text"
-        placeholder="PFO"
-        className="py-1 w-52 border-solid border-2 border-black rounded-md"
+        type={isPassword ? "password" : "text"}
+        placeholder={text}
+        className="py-1 w-52 text-base border-solid border-2 border-black rounded-md justify-end"
       />
-    </label>
+    </>
   );
 };
 
