@@ -3,7 +3,7 @@ import LoginView from "./views/LoginView";
 import ProjectView from "./views/ProjectView";
 
 function App() {
-  return <LoginView />;
+  return <ProjectView />;
 }
 
 export default App;

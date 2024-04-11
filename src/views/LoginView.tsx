@@ -10,7 +10,7 @@ const LoginView = () => {
     <>
       <Header />
       <div className="max-w-screen-lg mx-auto flex justify-center">
-        <div className="flex flex-col p-2  border-solid border-2 border-lime-500 rounded-md">
+        <div className="flex flex-col p-2 border-solid border-2 border-lime-500 rounded-md">
           <Title text="HEXAGON - Login" />
           <InputField text="E-Mail" />
           <InputField text="Passwort" isPassword />

@@ -8,14 +8,14 @@ const InputField = ({
   isPassword?: boolean;
 }) => {
   return (
-    <>
-      <label className="text-base justify-start">{text}</label>
+    <div className="flex">
+      <label className="flex text-base">{text}</label>
       <input
         type={isPassword ? "password" : "text"}
         placeholder={text}
-        className="py-1 w-52 text-base border-solid border-2 border-black rounded-md justify-end"
+        className="flex text-base border-solid border-2 border-black rounded-md"
       />
-    </>
+    </div>
   );
 };
 
