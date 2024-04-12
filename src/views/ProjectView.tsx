@@ -1,31 +1,29 @@
 import React from "react";
 import Button from "../components/Button";
 import InputField from "../components/InputField";
-import Header from "../components/Header";
 import CheckboxField from "../components/CheckboxField";
-import Footer from "../components/Footer";
 import Datepicker from "../components/Datepicker";
 import SelectField from "../components/SelectField";
 import Title from "../components/Title";
+import Page from "../components/Page";
 
 function ProjectView() {
   return (
-    <div className="h-screen flex flex-col align-center">
-      <Header />
-      <main className="max-w-screen-lg mx-auto grid grid-cols-2 gap-6">
+    <Page>
+      <div className="w-full grid grid-cols-2 gap-6">
         <div>
           <Title text="Kunde" />
-          <InputField text="Kunde" />
+          <InputField placeholder="PFO" />
         </div>
 
         <div>
           <Title text="Projekt" />
-          <InputField text="Projekt" />
+          <InputField placeholder="HM 01/24.01" />
         </div>
 
         <div>
           <Title text="Sprachen" />
-          <div className="flex flex-col border-solid border-2 border-black rounded-md">
+          <div className="flex flex-col w-52 p-2 border-solid border-2 border-black rounded-md">
             <CheckboxField name="Deutsch" />
             <CheckboxField name="Französisch" />
             <CheckboxField name="Italienisch" />
@@ -35,16 +33,16 @@ function ProjectView() {
         <div>
           <Title text="Auflagen" />
           <div className="flex flex-col">
-            <InputField text="Auflage Deutsch" />
-            <InputField text="Auflage Französisch" />
-            <InputField text="Auflage Italienisch" />
-            <InputField text="Auflage Total" />
+            <InputField label="Auflage Deutsch" />
+            <InputField label="Auflage Französisch" />
+            <InputField label="Auflage Italienisch" />
+            <InputField label="Auflage Total" />
           </div>
         </div>
 
         <div>
           <Title text="Package" />
-          <div className="flex flex-col border-solid border-2 border-black rounded-md">
+          <div className="flex flex-col w-52 p-2 border-solid border-2 border-black rounded-md">
             <CheckboxField name="Versandcouvert" />
             <CheckboxField name="Anschreiben" />
             <CheckboxField name="Flyer" />
@@ -55,14 +53,12 @@ function ProjectView() {
 
         <div>
           <Title text="Auflieferdatum" />
-          <div>
-            <Datepicker />
-          </div>
+          <Datepicker />
         </div>
 
         <div>
           <Title text="Versanddienstleister" />
-          <div className="flex flex-col border-solid border-2 border-black rounded-md">
+          <div className="flex flex-col w-52 p-2 border-solid border-2 border-black rounded-md">
             <CheckboxField name="Post" />
             <CheckboxField name="Quickmail" />
           </div>
@@ -74,12 +70,12 @@ function ProjectView() {
             <SelectField />
           </div>
         </div>
-      </main>
-      <div className="flex justify-center">
-        <Button text="Projekt speichern" />
+
+        <div className="col-span-2 flex justify-center">
+          <Button text="Projekt speichern" />
+        </div>
       </div>
-      <Footer />
-    </div>
+    </Page>
   );
 }
 
