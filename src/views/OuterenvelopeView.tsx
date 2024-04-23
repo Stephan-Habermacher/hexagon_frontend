@@ -1,32 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import Page from "../components/Page";
 import InputField from "../components/InputField";
 import SelectField from "../components/SelectField";
 import Datepicker from "../components/Datepicker";
 import SupplierCard from "../components/SupplierCard";
+import OutputField from "../components/OutputField";
 
 function OuterenvelopeView() {
+  const [numberOfSorts, setNumberOfSorts] = useState(1);
+  const [sortsNames, setSortsNames] = useState<string[]>(["Auflage Deutsch"]);
   return (
     <Page>
       <div className="w-full grid grid-cols-2 gap-6">
-        <InputField label="Projektreferenz" placeholder="PFO HM 01/24.01" />
-        <SelectField />
-        <InputField label="Produkt" />
-        <SelectField />
-        <InputField label="Anzahl Sorten" />
-        <InputField
-          label="Preprint"
-          placeholder="Druckdaten werden von uns geliefert"
-        />
-        <InputField />
-        <SelectField />
-        <InputField />
-        <InputField label="Postprint" placeholder="abpalettieren" />
-        <InputField label="Auflage Total" />
-        <Datepicker />
-        <SupplierCard />
-        <SupplierCard />
-        <SupplierCard />
+        <div>
+          <OutputField label="Projektreferenz" />
+          <OutputField label="Produkt" />
+          <InputField
+            label="Anzahl Sorten"
+            value={numberOfSorts}
+            onChange={(value) => {
+              const newValue = Number(value);
+              if (newValue >= 0) {
+                setNumberOfSorts(newValue);
+              } else {
+                alert("Wert muss mindestens 1 betragen");
+              }
+            }}
+          />
+
+          {Array(numberOfSorts)
+            .fill("")
+            .map((_, i) => (
+              <InputField
+                onChangeTextArea={(value) =>
+                  setSortsNames([
+                    ...sortsNames.slice(0, i),
+                    value,
+                    ...sortsNames.slice(i, sortsNames.length),
+                  ])
+                }
+                textarea={sortsNames[i] || ""}
+              />
+            ))}
+          <OutputField label="Auflage Total" />
+        </div>
+
+        <div>
+          <SelectField label="Format" />
+          <SelectField label="Papier" />
+          <OutputField label="Preprint" />
+          <SelectField label="Print" />
+          <OutputField label="Postprint" />
+          <Datepicker label="Lieferdatum" />
+        </div>
+      </div>
+      <div className="w-full grid grid-cols-2 gap-6 mt-4">
         <SupplierCard />
       </div>
     </Page>
