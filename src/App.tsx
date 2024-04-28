@@ -3,7 +3,7 @@ import OuterenvelopeView from "./views/OuterenvelopeView";
 import ProjectView from "./views/ProjectView";
 
 function App() {
-  return <OuterenvelopeView />;
+  return <ProjectView />;
 }
 
 export default App;

@@ -6,6 +6,7 @@ import Datepicker from "../components/Datepicker";
 import SelectField from "../components/SelectField";
 import Title from "../components/Title";
 import Page from "../components/Page";
+import OutputField from "../components/OutputField";
 
 function ProjectView() {
   return (
@@ -36,7 +37,7 @@ function ProjectView() {
             <InputField label="Auflage Deutsch" />
             <InputField label="Auflage Französisch" />
             <InputField label="Auflage Italienisch" />
-            <InputField label="Auflage Total" />
+            <OutputField label="Auflage Total" />
           </div>
         </div>
 
