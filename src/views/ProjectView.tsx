@@ -8,6 +8,10 @@ import Title from "../components/Title";
 import Page from "../components/Page";
 import OutputField from "../components/OutputField";
 
+// function postProject= {
+//   fetch()
+// }
+
 function ProjectView() {
   return (
     <Page>
