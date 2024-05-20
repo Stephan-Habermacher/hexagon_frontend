@@ -46,7 +46,7 @@ function Table({ projects }: { projects: IProject[] }) {
             <td>{project.lettershopId}</td>
             <td>
               {project.shippingProvider.isPost ? "Post" : ""}
-              {project.shippingProvider.isQuickmail ? "Quickmail" : ""}
+              {project.shippingProvider.isQuickmail ? "/Quickmail" : ""}
             </td>
             <td>{project.shippingDate}</td>
           </tr>

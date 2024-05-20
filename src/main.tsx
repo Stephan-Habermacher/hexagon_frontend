@@ -3,9 +3,9 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ProjectView from "./views/ProjectView.tsx";
 import OuterenvelopeView from "./views/OuterenvelopeView.tsx";
 import ProjectsOverviewView from "./views/ProjectsOverviewView.tsx";
+import ProjectView from "./views/ProjectView.tsx";
 
 const router = createBrowserRouter([
   {

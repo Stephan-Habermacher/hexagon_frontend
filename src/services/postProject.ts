@@ -24,7 +24,6 @@ async function postProject() {
     },
     body: JSON.stringify(postProjectBody),
   });
-  console.log("Hallo Liam");
 }
 
 export default postProject;
