@@ -27,7 +27,6 @@ function OuterenvelopeView() {
               }
             }}
           />
-
           {Array(numberOfSorts)
             .fill("")
             .map((_, i) => (
@@ -40,6 +39,8 @@ function OuterenvelopeView() {
                   ])
                 }
                 textarea={sortsNames[i] || ""}
+                value={""}
+                onChange={() => {}}
               />
             ))}
           <OutputField label="Auflage Total" />

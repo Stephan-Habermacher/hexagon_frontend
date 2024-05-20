@@ -1,7 +1,14 @@
 import React from "react";
-import { IProject } from "../Types";
+import { IProject } from "../types";
+import { useNavigate } from "react-router-dom";
 
 function Table({ projects }: { projects: IProject[] }) {
+  const navigate = useNavigate();
+
+  const handleRowClick = (id: string) => {
+    navigate(`/projekt/${id}`);
+  };
+
   return (
     <table className="table-auto w-full text-left">
       <thead className="h-8 bg-lime-500">
@@ -16,14 +23,20 @@ function Table({ projects }: { projects: IProject[] }) {
       </thead>
       <tbody>
         {projects.map((project) => (
-          <tr className="h-8 hover:bg-lime-200">
+          <tr
+            className="h-8 hover:bg-lime-200"
+            key={project.id}
+            onClick={() => {
+              handleRowClick(project.id);
+            }}
+          >
             <td>
               {project.customer} {project.name}
             </td>
             <td>
-              {project.quantities.german +
-                project.quantities.french +
-                project.quantities.italian}
+              {Object.values(project.quantities).reduce((prev, current) => {
+                return prev + current;
+              })}
             </td>
             <td>
               {project.languages.isGerman ? "d" : ""}

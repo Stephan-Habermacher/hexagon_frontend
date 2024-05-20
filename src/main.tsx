@@ -12,11 +12,15 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
   },
+  { path: "/projektuebersicht", element: <ProjectsOverviewView /> },
   {
     path: "/projekt",
     element: <ProjectView />,
   },
-  { path: "/projektuebersicht", element: <ProjectsOverviewView /> },
+  {
+    path: "/projekt/:id",
+    element: <ProjectView />,
+  },
   {
     path: "/versandcouvert",
     element: <OuterenvelopeView />,

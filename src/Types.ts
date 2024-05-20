@@ -1,17 +1,20 @@
-export interface IProject {
-  customer: String;
-  name: String;
-  id: String;
-  languages: { isGerman: Boolean; isFrench: Boolean; isItalian: Boolean };
-  quantities: { german: Number; french: Number; italian: Number };
+export interface IProject extends IProjectInputs {
+  id: string;
+}
+
+export interface IProjectInputs {
+  customer: string;
+  name: string;
+  languages: { isGerman: boolean; isFrench: boolean; isItalian: boolean };
+  quantities: { german: number; french: number; italian: number };
   package: {
-    isOuterenvelope: Boolean;
-    isLetter: Boolean;
-    isFlyer: Boolean;
-    isBooklet: Boolean;
-    isCards: Boolean;
+    isOuterenvelope: boolean;
+    isLetter: boolean;
+    isFlyer: boolean;
+    isBooklet: boolean;
+    isCards: boolean;
   };
-  lettershopId: String;
-  shippingProvider: { isPost: Boolean; isQuickmail: Boolean };
-  shippingDate: Number;
+  lettershopId: string;
+  shippingProvider: { isPost: boolean; isQuickmail: boolean };
+  shippingDate: number;
 }

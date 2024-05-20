@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../components/Button";
 import InputField from "../components/InputField";
 import CheckboxField from "../components/CheckboxField";
@@ -7,23 +7,50 @@ import SelectField from "../components/SelectField";
 import Title from "../components/Title";
 import Page from "../components/Page";
 import OutputField from "../components/OutputField";
-
-// function postProject= {
-//   fetch()
-// }
+import postProject from "../services/postProject";
+import { IProjectInputs } from "../types";
 
 function ProjectView() {
+  const [inputValues, setInputValues] = useState<IProjectInputs>({
+    customer: "",
+    name: "",
+    languages: { isGerman: false, isFrench: false, isItalian: false },
+    quantities: { german: 0, french: 0, italian: 0 },
+    package: {
+      isOuterenvelope: false,
+      isLetter: false,
+      isFlyer: false,
+      isBooklet: false,
+      isCards: false,
+    },
+    lettershopId: "",
+    shippingProvider: { isPost: false, isQuickmail: false },
+    shippingDate: 0,
+  });
+
   return (
     <Page>
       <div className="w-full grid grid-cols-2 gap-6">
         <div>
           <Title text="Kunde" />
-          <InputField placeholder="PFO" />
+          <InputField
+            placeholder="PFO"
+            onChange={(newVal) => {
+              setInputValues({ ...inputValues, customer: String(newVal) });
+            }}
+            value={inputValues.customer}
+          />
         </div>
 
         <div>
           <Title text="Projekt" />
-          <InputField placeholder="HM 01/24.01" />
+          <InputField
+            placeholder="HM 01/24.01"
+            onChange={(newVal) => {
+              setInputValues({ ...inputValues, name: String(newVal) });
+            }}
+            value={inputValues.name}
+          />
         </div>
 
         <div>
@@ -38,10 +65,53 @@ function ProjectView() {
         <div>
           <Title text="Auflagen" />
           <div className="flex flex-col">
-            <InputField label="Auflage Deutsch" />
-            <InputField label="Auflage Französisch" />
-            <InputField label="Auflage Italienisch" />
-            <OutputField label="Auflage Total" />
+            <InputField
+              label="Auflage Deutsch"
+              onChange={(newVal) => {
+                setInputValues({
+                  ...inputValues,
+                  quantities: {
+                    ...inputValues.quantities,
+                    german: Number(newVal),
+                  },
+                });
+              }}
+              value={inputValues.quantities.german}
+            />
+            <InputField
+              label="Auflage Französisch"
+              onChange={(newVal) => {
+                setInputValues({
+                  ...inputValues,
+                  quantities: {
+                    ...inputValues.quantities,
+                    french: Number(newVal),
+                  },
+                });
+              }}
+              value={inputValues.quantities.french}
+            />
+            <InputField
+              label="Auflage Italienisch"
+              onChange={(newVal) => {
+                setInputValues({
+                  ...inputValues,
+                  quantities: {
+                    ...inputValues.quantities,
+                    italian: Number(newVal),
+                  },
+                });
+              }}
+              value={inputValues.quantities.italian}
+            />
+            <OutputField
+              label="Auflage Total"
+              value={
+                inputValues.quantities.german +
+                inputValues.quantities.french +
+                inputValues.quantities.italian
+              }
+            />
           </div>
         </div>
 
@@ -58,7 +128,9 @@ function ProjectView() {
 
         <div>
           <Title text="Auflieferdatum" />
-          <Datepicker />
+          <Datepicker
+            onChange={(e) => console.log(new Date(e.target.value).getTime())}
+          />
         </div>
 
         <div>
@@ -77,7 +149,7 @@ function ProjectView() {
         </div>
 
         <div className="col-span-2 flex justify-center">
-          <Button text="Projekt speichern" />
+          <Button onClick={postProject} text="Projekt speichern" />
         </div>
       </div>
     </Page>
