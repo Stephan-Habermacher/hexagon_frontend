@@ -22,7 +22,6 @@ function ProjectView() {
       isOuterenvelope: false,
       isLetter: false,
       isFlyer: false,
-      isBooklet: false,
       isCards: false,
     },
     lettershopId: "",
