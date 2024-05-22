@@ -1,19 +1,18 @@
 const postProjectBody = {
   customer: "PFO",
   name: "HM 01/24.01",
-  id: "1",
+  id: "4",
   languages: { isGerman: true, isFrench: true, isItalian: true },
   quantities: { german: 60000, french: 20000, italian: 10000 },
   package: {
     isOuterenvelope: true,
     isLetter: true,
     isFlyer: true,
-    isBooklet: false,
     isCards: false,
   },
   lettershopId: "M+C",
   shippingProvider: { isPost: true, isQuickmail: true },
-  shippingDate: 1715356226785,
+  shippingDate: "2024-05-22",
 };
 
 async function postProject() {

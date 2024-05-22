@@ -30,12 +30,13 @@ function ProjectView() {
   });
 
   const [project, setProject] = useState(null);
-  const [loading, setLoading] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProject = async () => {
       try {
+        setLoading(true);
         const res = await fetch(`http://localhost:3000/project/${id}`);
         if (!res.ok) {
           throw new Error("Network response was not ok");
@@ -46,10 +47,12 @@ function ProjectView() {
         setLoading(false);
       } catch (error) {
         setError(error);
-        setLoading(false);
+        setLoading(true);
       }
     };
-    fetchProject();
+    if (id !== undefined) {
+      fetchProject();
+    }
   }, [id]);
 
   if (loading) {
@@ -91,30 +94,39 @@ function ProjectView() {
             <CheckboxField
               name="Deutsch"
               checked={inputValues.languages.isGerman}
-              onChange={(checked) => {
+              onClick={(e) => {
                 setInputValues({
                   ...inputValues,
-                  languages: { ...inputValues.languages, isGerman: checked },
+                  languages: {
+                    ...inputValues.languages,
+                    isGerman: !inputValues.languages.isGerman,
+                  },
                 });
               }}
             />
             <CheckboxField
               name="Französisch"
               checked={inputValues.languages.isFrench}
-              onChange={(checked) => {
+              onClick={(e) => {
                 setInputValues({
                   ...inputValues,
-                  languages: { ...inputValues.languages, isFrench: checked },
+                  languages: {
+                    ...inputValues.languages,
+                    isGerman: !inputValues.languages.isFrench,
+                  },
                 });
               }}
             />
             <CheckboxField
               name="Italienisch"
               checked={inputValues.languages.isItalian}
-              onChange={(checked) => {
+              onClick={(e) => {
                 setInputValues({
                   ...inputValues,
-                  languages: { ...inputValues.languages, isItalian: checked },
+                  languages: {
+                    ...inputValues.languages,
+                    isGerman: !inputValues.languages.isItalian,
+                  },
                 });
               }}
             />
@@ -136,6 +148,7 @@ function ProjectView() {
                 });
               }}
               value={inputValues.quantities.german}
+              disabled={!inputValues.languages.isGerman}
             />
             <InputField
               label="Auflage Französisch"
@@ -149,6 +162,7 @@ function ProjectView() {
                 });
               }}
               value={inputValues.quantities.french}
+              disabled={!inputValues.languages.isFrench}
             />
             <InputField
               label="Auflage Italienisch"
@@ -162,6 +176,7 @@ function ProjectView() {
                 });
               }}
               value={inputValues.quantities.italian}
+              disabled={!inputValues.languages.isItalian}
             />
             <OutputField
               label="Auflage Total"

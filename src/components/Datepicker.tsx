@@ -3,9 +3,11 @@ import React from "react";
 function Datepicker({
   label,
   onChange,
+  value,
 }: {
   label?: string;
   onChange: () => void;
+  value: string;
 }) {
   return (
     <div className="flex py-1">
@@ -13,6 +15,7 @@ function Datepicker({
       <input
         type="date"
         onChange={onChange}
+        value={value}
         className="flex py-1 w-52 text-base border-solid border-2 border-black rounded-md"
       />
     </div>

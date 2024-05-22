@@ -3,11 +3,11 @@ import React from "react";
 function CheckboxField({
   name,
   checked,
-  onChange,
+  onClick,
 }: {
   name: string;
   checked: boolean;
-  onChange: (event: React.ReactEventHandler<HTMLInputElement>) => void;
+  onClick: React.MouseEventHandler<HTMLInputElement>;
 }) {
   return (
     <label className="text-base">
@@ -15,7 +15,7 @@ function CheckboxField({
         type="checkbox"
         className="text-base"
         checked={checked}
-        onChange={onChange}
+        onClick={onClick}
       ></input>
       {name}
     </label>
