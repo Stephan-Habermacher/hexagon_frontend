@@ -1,7 +1,7 @@
 const postProjectBody = {
+  id: "4",
   customer: "PFO",
   name: "HM 01/24.01",
-  id: "4",
   languages: { isGerman: true, isFrench: true, isItalian: true },
   quantities: { german: 60000, french: 20000, italian: 10000 },
   package: {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "../components/Button";
 import InputField from "../components/InputField";
 import CheckboxField from "../components/CheckboxField";
@@ -8,11 +8,15 @@ import Title from "../components/Title";
 import Page from "../components/Page";
 import OutputField from "../components/OutputField";
 import postProject from "../services/postProject";
-import { IProjectInputs } from "../types";
+import { ILettershop, IProjectInputs } from "../types";
 import { useParams } from "react-router-dom";
 
 function ProjectView() {
   const { id } = useParams();
+  const [project, setProject] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [lettershops, setLettershops] = useState<ILettershop[]>([]);
   const [inputValues, setInputValues] = useState<IProjectInputs>({
     customer: "",
     name: "",
@@ -26,12 +30,10 @@ function ProjectView() {
     },
     lettershopId: "",
     shippingProvider: { isPost: false, isQuickmail: false },
-    shippingDate: 0,
+    shippingDate: "",
   });
 
-  const [project, setProject] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const lettershopsFetched = useRef(false);
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -50,10 +52,21 @@ function ProjectView() {
         setLoading(true);
       }
     };
-    if (id !== undefined) {
+    if (id !== undefined && lettershopsFetched.current) {
       fetchProject();
     }
-  }, [id]);
+  }, [id, lettershopsFetched.current]);
+
+  useEffect(() => {
+    const fetchProject = async () => {
+      const res = await fetch(`http://localhost:3000/lettershops`);
+      const data = await res.json();
+      setLettershops(data);
+      lettershopsFetched.current = true;
+      console.log(data);
+    };
+    fetchProject();
+  }, []);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -112,7 +125,7 @@ function ProjectView() {
                   ...inputValues,
                   languages: {
                     ...inputValues.languages,
-                    isGerman: !inputValues.languages.isFrench,
+                    isFrench: !inputValues.languages.isFrench,
                   },
                 });
               }}
@@ -125,7 +138,7 @@ function ProjectView() {
                   ...inputValues,
                   languages: {
                     ...inputValues.languages,
-                    isGerman: !inputValues.languages.isItalian,
+                    isItalian: !inputValues.languages.isItalian,
                   },
                 });
               }}
@@ -241,12 +254,10 @@ function ProjectView() {
             onChange={(e) => {
               setInputValues({
                 ...inputValues,
-                shippingDate: new Date(e.target.value).getTime(),
+                shippingDate: e.target.value,
               });
             }}
-            value={
-              new Date(inputValues.shippingDate).toISOString().split("T")[0]
-            }
+            value={inputValues.shippingDate}
           />
         </div>
 
@@ -292,6 +303,10 @@ function ProjectView() {
                   lettershopId: String(newVal),
                 });
               }}
+              options={lettershops.map((lettershop) => ({
+                value: lettershop.id,
+                label: lettershop.lettershopName,
+              }))}
               value={inputValues.lettershopId}
             />
           </div>
