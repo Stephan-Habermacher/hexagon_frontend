@@ -1,6 +1,7 @@
 import React from "react";
 import { IProject } from "../types";
 import { useNavigate } from "react-router-dom";
+import { formatDate } from "../utils/formatDate";
 
 function Table({ projects }: { projects: IProject[] }) {
   const navigate = useNavigate();
@@ -11,9 +12,9 @@ function Table({ projects }: { projects: IProject[] }) {
 
   return (
     <table className="table-auto w-full text-left">
-      <thead className="h-8 bg-lime-500">
+      <thead className="h-8 bg-lime-500 text-white">
         <tr>
-          <th>Kunde/Projekt</th>
+          <th>Kunde / Projekt</th>
           <th>Auflage</th>
           <th>Sprachen</th>
           <th>Lettershop</th>
@@ -43,12 +44,12 @@ function Table({ projects }: { projects: IProject[] }) {
               {project.languages.isFrench ? "/f" : ""}
               {project.languages.isItalian ? "/i" : ""}
             </td>
-            <td>{project.lettershopId}</td>
+            <td>{project.lettershopId === "2" ? "Speed Mail" : "M+C"}</td>
             <td>
               {project.shippingProvider.isPost ? "Post" : ""}
               {project.shippingProvider.isQuickmail ? "/Quickmail" : ""}
             </td>
-            <td>{project.shippingDate}</td>
+            <td>{formatDate(project.shippingDate)}</td>
           </tr>
         ))}
       </tbody>

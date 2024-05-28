@@ -6,6 +6,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import OuterenvelopeView from "./views/OuterenvelopeView.tsx";
 import ProjectsOverviewView from "./views/ProjectsOverviewView.tsx";
 import ProjectView from "./views/ProjectView.tsx";
+import {
+  BreadcrumbContext,
+  BreadcrumbContextProvider,
+} from "./context/BreadcrumbContext.tsx";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +33,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <BreadcrumbContextProvider>
+      <RouterProvider router={router} />
+    </BreadcrumbContextProvider>
   </React.StrictMode>
 );

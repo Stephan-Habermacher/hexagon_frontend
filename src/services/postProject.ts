@@ -10,7 +10,7 @@ const postProjectBody = {
     isFlyer: true,
     isCards: false,
   },
-  lettershopId: "M+C",
+  lettershopId: "1",
   shippingProvider: { isPost: true, isQuickmail: true },
   shippingDate: "2024-05-22",
 };

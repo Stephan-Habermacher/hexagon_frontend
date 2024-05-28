@@ -47,10 +47,10 @@ function OuterenvelopeView() {
         </div>
 
         <div>
-          <SelectField label="Format" />
-          <SelectField label="Papier" />
+          <SelectField label="Format" options={[]} />
+          <SelectField label="Papier" options={[]} />
           <OutputField label="Preprint" />
-          <SelectField label="Print" />
+          <SelectField label="Print" options={[]} />
           <OutputField label="Postprint" />
           <Datepicker label="Lieferdatum" />
         </div>

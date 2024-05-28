@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Button from "../components/Button";
 import InputField from "../components/InputField";
 import CheckboxField from "../components/CheckboxField";
@@ -10,12 +10,14 @@ import OutputField from "../components/OutputField";
 import postProject from "../services/postProject";
 import { ILettershop, IProjectInputs } from "../types";
 import { useParams } from "react-router-dom";
+import { BreadcrumbContext } from "../context/BreadcrumbContext";
 
 function ProjectView() {
   const { id } = useParams();
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { setBreadcrumbname } = useContext(BreadcrumbContext);
   const [lettershops, setLettershops] = useState<ILettershop[]>([]);
   const [inputValues, setInputValues] = useState<IProjectInputs>({
     customer: "",
@@ -67,6 +69,10 @@ function ProjectView() {
     };
     fetchProject();
   }, []);
+
+  useEffect(() => {
+    setBreadcrumbname(inputValues.customer + " " + inputValues.name);
+  }, [inputValues]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -208,40 +214,52 @@ function ProjectView() {
             <CheckboxField
               name="Versandcouvert"
               checked={inputValues.package.isOuterenvelope}
-              onChange={(checked) => {
+              onClick={(e) => {
                 setInputValues({
                   ...inputValues,
-                  package: { ...inputValues.package, isOuterenvelope: checked },
+                  package: {
+                    ...inputValues.package,
+                    isOuterenvelope: !inputValues.package.isOuterenvelope,
+                  },
                 });
               }}
             />
             <CheckboxField
               name="Anschreiben"
               checked={inputValues.package.isLetter}
-              onChange={(checked) => {
+              onClick={(e) => {
                 setInputValues({
                   ...inputValues,
-                  package: { ...inputValues.package, isLetter: checked },
+                  package: {
+                    ...inputValues.package,
+                    isLetter: !inputValues.package.isLetter,
+                  },
                 });
               }}
             />
             <CheckboxField
               name="Flyer"
               checked={inputValues.package.isFlyer}
-              onChange={(checked) => {
+              onClick={(e) => {
                 setInputValues({
                   ...inputValues,
-                  package: { ...inputValues.package, isFlyer: checked },
+                  package: {
+                    ...inputValues.package,
+                    isFlyer: !inputValues.package.isFlyer,
+                  },
                 });
               }}
             />
             <CheckboxField
               name="Karten"
               checked={inputValues.package.isCards}
-              onChange={(checked) => {
+              onClick={(e) => {
                 setInputValues({
                   ...inputValues,
-                  package: { ...inputValues.package, isCards: checked },
+                  package: {
+                    ...inputValues.package,
+                    isCards: !inputValues.package.isCards,
+                  },
                 });
               }}
             />
@@ -267,12 +285,12 @@ function ProjectView() {
             <CheckboxField
               name="Post"
               checked={inputValues.shippingProvider.isPost}
-              onChange={(checked) => {
+              onClick={(e) => {
                 setInputValues({
                   ...inputValues,
                   shippingProvider: {
                     ...inputValues.shippingProvider,
-                    isPost: checked,
+                    isPost: !inputValues.shippingProvider.isPost,
                   },
                 });
               }}
@@ -280,12 +298,12 @@ function ProjectView() {
             <CheckboxField
               name="Quickmail"
               checked={inputValues.shippingProvider.isQuickmail}
-              onChange={(checked) => {
+              onClick={(e) => {
                 setInputValues({
                   ...inputValues,
                   shippingProvider: {
                     ...inputValues.shippingProvider,
-                    isQuickmail: checked,
+                    isQuickmail: !inputValues.shippingProvider.isQuickmail,
                   },
                 });
               }}
