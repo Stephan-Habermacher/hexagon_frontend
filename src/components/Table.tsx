@@ -2,6 +2,7 @@ import React from "react";
 import { IProject } from "../types";
 import { useNavigate } from "react-router-dom";
 import { formatDate } from "../utils/formatDate";
+import { formatNumber } from "../utils/formatNumber";
 
 function Table({ projects }: { projects: IProject[] }) {
   const navigate = useNavigate();
@@ -35,9 +36,11 @@ function Table({ projects }: { projects: IProject[] }) {
               {project.customer} {project.name}
             </td>
             <td>
-              {Object.values(project.quantities).reduce((prev, current) => {
-                return prev + current;
-              })}
+              {formatNumber(
+                Object.values(project.quantities).reduce((prev, current) => {
+                  return prev + current;
+                })
+              )}
             </td>
             <td>
               {project.languages.isGerman ? "d" : ""}

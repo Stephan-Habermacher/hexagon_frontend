@@ -13,7 +13,7 @@ function CheckboxField({
     <label className="text-base">
       <input
         type="checkbox"
-        className="text-base"
+        className="text-base mr-1"
         checked={checked}
         onClick={onClick}
       ></input>

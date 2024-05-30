@@ -1,4 +1,5 @@
 import React from "react";
+import { formatNumber, unformatNumber } from "../utils/formatNumber";
 
 const InputField = ({
   textarea,
@@ -32,8 +33,8 @@ const InputField = ({
       {label && <label className="flex py-1 w-52 text-base">{label}</label>}
       <input
         type={isPassword ? "password" : "text"}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
+        value={formatNumber(value)}
+        onChange={(e) => onChange(unformatNumber(e.target.value))}
         placeholder={placeholder}
         className="flex p-1 w-52 text-base border-solid border-2 border-black rounded-md disabled:bg-slate-200"
         disabled={disabled}
