@@ -7,6 +7,7 @@ const InputField = ({
   label,
   placeholder,
   value,
+  useFormat,
   onChange,
   onChangeTextArea,
   disabled,
@@ -16,6 +17,7 @@ const InputField = ({
   label?: string;
   placeholder?: string;
   value: string | number;
+  useFormat?: boolean;
   onChange: (value: string | number) => void;
   onChangeTextArea?: (value: string) => void;
   disabled?: boolean;
@@ -33,8 +35,10 @@ const InputField = ({
       {label && <label className="flex py-1 w-52 text-base">{label}</label>}
       <input
         type={isPassword ? "password" : "text"}
-        value={formatNumber(value)}
-        onChange={(e) => onChange(unformatNumber(e.target.value))}
+        value={useFormat ? formatNumber(value) : value}
+        onChange={(e) =>
+          onChange(useFormat ? unformatNumber(e.target.value) : e.target.value)
+        }
         placeholder={placeholder}
         className="flex p-1 w-52 text-base border-solid border-2 border-black rounded-md disabled:bg-slate-200"
         disabled={disabled}

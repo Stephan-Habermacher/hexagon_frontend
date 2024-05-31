@@ -3,13 +3,13 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import OuterenvelopeView from "./views/OuterenvelopeView.tsx";
 import ProjectsOverviewView from "./views/ProjectsOverviewView.tsx";
 import ProjectView from "./views/ProjectView.tsx";
 import {
   BreadcrumbContext,
   BreadcrumbContextProvider,
 } from "./context/BreadcrumbContext.tsx";
+import ProductView from "./views/ProductView.tsx";
 
 const router = createBrowserRouter([
   {
@@ -26,8 +26,20 @@ const router = createBrowserRouter([
     element: <ProjectView />,
   },
   {
-    path: "/versandcouvert",
-    element: <OuterenvelopeView />,
+    path: "/projekt/:id/versandcouvert",
+    element: <ProductView product={"Versandcouvert"} />,
+  },
+  {
+    path: "/projekt/:id/anschreiben",
+    element: <ProductView product={"Anschreiben"} />,
+  },
+  {
+    path: "/projekt/:id/flyer",
+    element: <ProductView product={"Flyer"} />,
+  },
+  {
+    path: "/projekt/:id/karten",
+    element: <ProductView product={"Karten"} />,
   },
 ]);
 

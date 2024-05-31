@@ -168,6 +168,7 @@ function ProjectView() {
               }}
               value={inputValues.quantities.german}
               disabled={!inputValues.languages.isGerman}
+              useFormat
             />
             <InputField
               label="Auflage Französisch"
@@ -182,6 +183,7 @@ function ProjectView() {
               }}
               value={inputValues.quantities.french}
               disabled={!inputValues.languages.isFrench}
+              useFormat
             />
             <InputField
               label="Auflage Italienisch"
@@ -196,6 +198,7 @@ function ProjectView() {
               }}
               value={inputValues.quantities.italian}
               disabled={!inputValues.languages.isItalian}
+              useFormat
             />
             <OutputField
               label="Auflage Total"
@@ -204,6 +207,7 @@ function ProjectView() {
                 inputValues.quantities.french +
                 inputValues.quantities.italian
               }
+              useFormat
             />
           </div>
         </div>
@@ -331,7 +335,18 @@ function ProjectView() {
         </div>
 
         <div className="col-span-2 flex justify-center">
-          <Button onClick={postProject} text="Projekt speichern" />
+          {id === undefined ? (
+            <Button onClick={postProject} text="Projekt speichern" />
+          ) : (
+            <div className="col-span-2 flex justify-center gap-2">
+              {inputValues.package.isOuterenvelope && (
+                <Button text="Versandcouvert" />
+              )}
+              {inputValues.package.isLetter && <Button text="Anschreiben" />}
+              {inputValues.package.isFlyer && <Button text="Flyer" />}
+              {inputValues.package.isCards && <Button text="Karten" />}
+            </div>
+          )}
         </div>
       </div>
     </Page>

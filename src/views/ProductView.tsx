@@ -6,7 +6,11 @@ import Datepicker from "../components/Datepicker";
 import SupplierCard from "../components/SupplierCard";
 import OutputField from "../components/OutputField";
 
-function OuterenvelopeView() {
+function ProductView({
+  product,
+}: {
+  product: "Versandcouvert" | "Anschreiben" | "Flyer" | "Karten";
+}) {
   const [numberOfSorts, setNumberOfSorts] = useState(1);
   const [sortsNames, setSortsNames] = useState<string[]>(["Auflage Deutsch"]);
   return (
@@ -14,7 +18,7 @@ function OuterenvelopeView() {
       <div className="w-full grid grid-cols-2 gap-6">
         <div>
           <OutputField label="Projektreferenz" />
-          <OutputField label="Produkt" />
+          <OutputField label="Produkt" value={product} />
           <InputField
             label="Anzahl Sorten"
             value={numberOfSorts}
@@ -62,4 +66,4 @@ function OuterenvelopeView() {
   );
 }
 
-export default OuterenvelopeView;
+export default ProductView;
