@@ -40,20 +40,11 @@ function ProjectView() {
 
   useEffect(() => {
     const fetchProject = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch(`http://localhost:3000/project/${id}`);
-        if (!res.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await res.json();
-        setProject(data);
-        setInputValues(data);
-        setLoading(false);
-      } catch (error) {
-        setError(error);
-        setLoading(true);
-      }
+      setLoading(true);
+      const res = await fetch(`http://localhost:3000/project/${id}`);
+      const data = await res.json();
+      setProject(data);
+      setInputValues(data);
     };
     if (id !== undefined && lettershopsFetched.current) {
       fetchProject();
@@ -66,7 +57,6 @@ function ProjectView() {
       const data = await res.json();
       setLettershops(data);
       lettershopsFetched.current = true;
-      console.log(data);
     };
     fetchProject();
   }, []);
@@ -74,14 +64,6 @@ function ProjectView() {
   useEffect(() => {
     setBreadcrumbname(inputValues.customer + " " + inputValues.name);
   }, [inputValues]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
 
   return (
     <Page>

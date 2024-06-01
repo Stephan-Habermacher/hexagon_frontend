@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Page from "../components/Page";
 import InputField from "../components/InputField";
 import SelectField from "../components/SelectField";
 import Datepicker from "../components/Datepicker";
 import SupplierCard from "../components/SupplierCard";
 import OutputField from "../components/OutputField";
+import { IOuterenvelope } from "../types";
 
 function ProductView({
   product,
@@ -13,6 +14,16 @@ function ProductView({
 }) {
   const [numberOfSorts, setNumberOfSorts] = useState(1);
   const [sortsNames, setSortsNames] = useState<string[]>(["Auflage Deutsch"]);
+  const [outerenvelopes, setOuterenvelopes] = useState<IOuterenvelope[]>([]);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const res = await fetch(`http://localhost:3000/outerenvelopes`);
+      const data = await res.json();
+      setOuterenvelopes(data);
+    };
+    fetchProduct();
+  }, []);
 
   return (
     <Page>
@@ -52,7 +63,22 @@ function ProductView({
         </div>
 
         <div>
-          <SelectField label="Format" options={[]} />
+          <SelectField
+            label="Format"
+            options={outerenvelopes.map((outerenvelope) => ({
+              value: outerenvelope.id,
+              label:
+                outerenvelope.format +
+                ", " +
+                outerenvelope.windowposition +
+                ", " +
+                outerenvelope.windowsize +
+                ", " +
+                outerenvelope.closure,
+            }))}
+            onChange={(value) => setSelectedFormat(Number(value))}
+            value={""}
+          />
           <SelectField label="Papier" options={[]} />
           <OutputField label="Preprint" />
           <SelectField label="Print" options={[]} />
