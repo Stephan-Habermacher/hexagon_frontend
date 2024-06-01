@@ -13,6 +13,7 @@ function ProductView({
 }) {
   const [numberOfSorts, setNumberOfSorts] = useState(1);
   const [sortsNames, setSortsNames] = useState<string[]>(["Auflage Deutsch"]);
+
   return (
     <Page>
       <div className="w-full grid grid-cols-2 gap-6">

@@ -9,11 +9,12 @@ import Page from "../components/Page";
 import OutputField from "../components/OutputField";
 import postProject from "../services/postProject";
 import { ILettershop, IProjectInputs } from "../types";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { BreadcrumbContext } from "../context/BreadcrumbContext";
 
 function ProjectView() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -338,13 +339,31 @@ function ProjectView() {
           {id === undefined ? (
             <Button onClick={postProject} text="Projekt speichern" />
           ) : (
-            <div className="col-span-2 flex justify-center gap-2">
+            <div className="col-span-2 flex justify-center gap-8">
               {inputValues.package.isOuterenvelope && (
-                <Button text="Versandcouvert" />
+                <Button
+                  onClick={() => navigate(`/projekt/:id/versandcouvert`)}
+                  text="Versandcouvert"
+                />
               )}
-              {inputValues.package.isLetter && <Button text="Anschreiben" />}
-              {inputValues.package.isFlyer && <Button text="Flyer" />}
-              {inputValues.package.isCards && <Button text="Karten" />}
+              {inputValues.package.isLetter && (
+                <Button
+                  onClick={() => navigate(`/projekt/:id/anschreiben`)}
+                  text="Anschreiben"
+                />
+              )}
+              {inputValues.package.isFlyer && (
+                <Button
+                  onClick={() => navigate(`/projekt/:id/flyer`)}
+                  text="Flyer"
+                />
+              )}
+              {inputValues.package.isCards && (
+                <Button
+                  onClick={() => navigate(`/projekt/:id/karten`)}
+                  text="Karten"
+                />
+              )}
             </div>
           )}
         </div>
