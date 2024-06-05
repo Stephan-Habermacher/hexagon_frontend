@@ -15,9 +15,6 @@ import { BreadcrumbContext } from "../context/BreadcrumbContext";
 function ProjectView() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [project, setProject] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const { setBreadcrumbname } = useContext(BreadcrumbContext);
   const [lettershops, setLettershops] = useState<ILettershop[]>([]);
   const [inputValues, setInputValues] = useState<IProjectInputs>({
@@ -40,10 +37,8 @@ function ProjectView() {
 
   useEffect(() => {
     const fetchProject = async () => {
-      setLoading(true);
       const res = await fetch(`http://localhost:3000/project/${id}`);
       const data = await res.json();
-      setProject(data);
       setInputValues(data);
     };
     if (id !== undefined && lettershopsFetched.current) {
@@ -324,25 +319,25 @@ function ProjectView() {
             <div className="col-span-2 flex justify-center gap-8">
               {inputValues.package.isOuterenvelope && (
                 <Button
-                  onClick={() => navigate(`/projekt/:id/versandcouvert`)}
+                  onClick={() => navigate(`/projekt/${id}/versandcouvert`)}
                   text="Versandcouvert"
                 />
               )}
               {inputValues.package.isLetter && (
                 <Button
-                  onClick={() => navigate(`/projekt/:id/anschreiben`)}
+                  onClick={() => navigate(`/projekt/${id}/anschreiben`)}
                   text="Anschreiben"
                 />
               )}
               {inputValues.package.isFlyer && (
                 <Button
-                  onClick={() => navigate(`/projekt/:id/flyer`)}
+                  onClick={() => navigate(`/projekt/${id}/flyer`)}
                   text="Flyer"
                 />
               )}
               {inputValues.package.isCards && (
                 <Button
-                  onClick={() => navigate(`/projekt/:id/karten`)}
+                  onClick={() => navigate(`/projekt/${id}/karten`)}
                   text="Karten"
                 />
               )}

@@ -4,7 +4,7 @@ import Title from "../components/Title";
 import Button from "../components/Button";
 import Page from "../components/Page";
 
-const LoginView = () => {
+function LoginView() {
   return (
     <Page>
       <div className="flex flex-col items-center p-2 border-solid border-2 border-lime-500 rounded-md">
@@ -15,6 +15,6 @@ const LoginView = () => {
       </div>
     </Page>
   );
-};
+}
 
 export default LoginView;

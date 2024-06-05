@@ -24,7 +24,7 @@ function ProjectsOverviewView() {
   return (
     <Page>
       <>
-        <div className="w-full flex justify-end ">
+        <div className="w-full flex justify-end">
           <Button onClick={handleButtonClick} text="Neues Projekt erstellen" />
         </div>
         <div className="mt-2">
