@@ -5,7 +5,7 @@ interface IPostProductBody {
   print: string;
 }
 
-import { ISupplierCard, ProductTypes } from "../types";
+import { ISupplierCard, ProductTypes } from "../types/types";
 
 async function postProductResults(
   product: ProductTypes,

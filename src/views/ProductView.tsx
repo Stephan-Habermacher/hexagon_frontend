@@ -5,7 +5,7 @@ import SelectField from "../components/SelectField";
 import Datepicker from "../components/Datepicker";
 import SupplierCard from "../components/SupplierCard";
 import OutputField from "../components/OutputField";
-import { IOuterenvelope, ISupplierCard, ProductTypes } from "../types";
+import { IOuterenvelope, ISupplierCard, ProductTypes } from "../types/types";
 import { BreadcrumbContext } from "../context/BreadcrumbContext";
 import Button from "../components/Button";
 import postProductResults from "../services/postProductResults";

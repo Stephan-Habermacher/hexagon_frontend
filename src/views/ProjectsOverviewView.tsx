@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Page from "../components/Page";
 import Button from "../components/Button";
 import Table from "../components/Table";
-import { IProject } from "../types";
+import { IProject } from "../types/types";
 import { useNavigate } from "react-router-dom";
 
 function ProjectsOverviewView() {

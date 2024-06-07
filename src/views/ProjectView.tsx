@@ -8,7 +8,7 @@ import Title from "../components/Title";
 import Page from "../components/Page";
 import OutputField from "../components/OutputField";
 import postProject from "../services/postProject";
-import { ILettershop, IProjectInputs } from "../types";
+import { ILettershop, IProjectInputs } from "../types/types";
 import { useNavigate, useParams } from "react-router-dom";
 import { BreadcrumbContext } from "../context/BreadcrumbContext";
 

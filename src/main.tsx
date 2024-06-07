@@ -7,7 +7,7 @@ import ProjectsOverviewView from "./views/ProjectsOverviewView.tsx";
 import ProjectView from "./views/ProjectView.tsx";
 import { BreadcrumbContextProvider } from "./context/BreadcrumbContext.tsx";
 import ProductView from "./views/ProductView.tsx";
-import { ProductTypes } from "./types.ts";
+import { ProductTypes } from "./types/types.ts";
 
 const router = createBrowserRouter(
   [
