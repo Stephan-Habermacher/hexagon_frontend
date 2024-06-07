@@ -1,9 +1,3 @@
-//const postProductBody = {
-//Anzahl Sorten
-//Auflage Total
-//Ausgewähltes Format
-//Ausgewähltes Print
-
 interface IPostProductBody {
   numberOfSorts: number;
   quantityTotal: number;
