@@ -12,37 +12,40 @@ import {
 import ProductView from "./views/ProductView.tsx";
 import { ProductTypes } from "./types.ts";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-  { path: "/projektuebersicht", element: <ProjectsOverviewView /> },
-  {
-    path: "/projekt",
-    element: <ProjectView />,
-  },
-  {
-    path: "/projekt/:id",
-    element: <ProjectView />,
-  },
-  {
-    path: "/projekt/:id/versandcouvert",
-    element: <ProductView product={ProductTypes.Versandcouvert} />,
-  },
-  {
-    path: "/projekt/:id/anschreiben",
-    element: <ProductView product={ProductTypes.Anschreiben} />,
-  },
-  {
-    path: "/projekt/:id/flyer",
-    element: <ProductView product={ProductTypes.Flyer} />,
-  },
-  {
-    path: "/projekt/:id/karten",
-    element: <ProductView product={ProductTypes.Karten} />,
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+    },
+    { path: "/projektuebersicht", element: <ProjectsOverviewView /> },
+    {
+      path: "/projekt",
+      element: <ProjectView />,
+    },
+    {
+      path: "/projekt/:id",
+      element: <ProjectView />,
+    },
+    {
+      path: "/projekt/:id/versandcouvert",
+      element: <ProductView product={ProductTypes.Versandcouvert} />,
+    },
+    {
+      path: "/projekt/:id/anschreiben",
+      element: <ProductView product={ProductTypes.Anschreiben} />,
+    },
+    {
+      path: "/projekt/:id/flyer",
+      element: <ProductView product={ProductTypes.Flyer} />,
+    },
+    {
+      path: "/projekt/:id/karten",
+      element: <ProductView product={ProductTypes.Karten} />,
+    },
+  ],
+  { basename: "/hexagon_frontend/" }
+);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
