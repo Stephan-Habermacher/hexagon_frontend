@@ -314,7 +314,12 @@ function ProjectView() {
 
         <div className="col-span-2 flex justify-center">
           {id === undefined ? (
-            <Button onClick={postProject} text="Projekt speichern" />
+            <Button
+              onClick={() => {
+                postProject(inputValues);
+              }}
+              text="Projekt speichern"
+            />
           ) : (
             <div className="col-span-2 flex justify-center gap-8">
               {inputValues.package.isOuterenvelope && (
