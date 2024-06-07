@@ -30,7 +30,9 @@ function ProductView({ product }: { product: ProductTypes }) {
 
   useEffect(() => {
     const fetchPrints = async () => {
-      const res = await fetch(`http://localhost:3000/pricelist${product}`);
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/pricelist${product}`
+      );
       const data = await res.json();
       setPrints(data);
       console.log(data);
@@ -42,7 +44,9 @@ function ProductView({ product }: { product: ProductTypes }) {
   useEffect(() => {
     const fetchProduct = async () => {
       if (printsFetched.current) {
-        const res = await fetch(`http://localhost:3000/outerenvelopes`);
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}/outerenvelopes`
+        );
         const data = await res.json();
         setOuterenvelopes(data);
       }

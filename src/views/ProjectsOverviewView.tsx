@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 function ProjectsOverviewView() {
   const [projects, setProjects] = useState<IProject[]>([]);
   async function fetchProjects() {
-    const res = await fetch("http://localhost:3000/projects");
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/projects`);
     const data = await res.json();
     setProjects(data);
   }

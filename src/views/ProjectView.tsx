@@ -37,7 +37,7 @@ function ProjectView() {
 
   useEffect(() => {
     const fetchProject = async () => {
-      const res = await fetch(`http://localhost:3000/project/${id}`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/project/${id}`);
       const data = await res.json();
       setInputValues(data);
     };
@@ -48,7 +48,7 @@ function ProjectView() {
 
   useEffect(() => {
     const fetchProject = async () => {
-      const res = await fetch(`http://localhost:3000/lettershops`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/lettershops`);
       const data = await res.json();
       setLettershops(data);
       lettershopsFetched.current = true;
