@@ -38,7 +38,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
-        run: npm run buildwithouttsc
+        run: npm run build
         env:
           VITE_API_URL: ${{ secrets.HEXAGON_BACKEND_URL }}
       - name: Setup Pages
