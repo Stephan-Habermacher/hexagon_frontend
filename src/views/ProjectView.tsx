@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Button from "../components/Button";
 import InputField from "../components/InputField";
 import CheckboxField from "../components/CheckboxField";
@@ -91,7 +91,7 @@ function ProjectView() {
             <CheckboxField
               name="Deutsch"
               checked={inputValues.languages.isGerman}
-              onClick={(e) => {
+              onClick={() => {
                 setInputValues({
                   ...inputValues,
                   languages: {
@@ -104,7 +104,7 @@ function ProjectView() {
             <CheckboxField
               name="Französisch"
               checked={inputValues.languages.isFrench}
-              onClick={(e) => {
+              onClick={() => {
                 setInputValues({
                   ...inputValues,
                   languages: {
@@ -117,7 +117,7 @@ function ProjectView() {
             <CheckboxField
               name="Italienisch"
               checked={inputValues.languages.isItalian}
-              onClick={(e) => {
+              onClick={() => {
                 setInputValues({
                   ...inputValues,
                   languages: {
@@ -196,7 +196,7 @@ function ProjectView() {
             <CheckboxField
               name="Versandcouvert"
               checked={inputValues.package.isOuterenvelope}
-              onClick={(e) => {
+              onClick={() => {
                 setInputValues({
                   ...inputValues,
                   package: {
@@ -209,7 +209,7 @@ function ProjectView() {
             <CheckboxField
               name="Anschreiben"
               checked={inputValues.package.isLetter}
-              onClick={(e) => {
+              onClick={() => {
                 setInputValues({
                   ...inputValues,
                   package: {
@@ -222,7 +222,7 @@ function ProjectView() {
             <CheckboxField
               name="Flyer"
               checked={inputValues.package.isFlyer}
-              onClick={(e) => {
+              onClick={() => {
                 setInputValues({
                   ...inputValues,
                   package: {
@@ -235,7 +235,7 @@ function ProjectView() {
             <CheckboxField
               name="Karten"
               checked={inputValues.package.isCards}
-              onClick={(e) => {
+              onClick={() => {
                 setInputValues({
                   ...inputValues,
                   package: {
@@ -267,7 +267,7 @@ function ProjectView() {
             <CheckboxField
               name="Post"
               checked={inputValues.shippingProvider.isPost}
-              onClick={(e) => {
+              onClick={() => {
                 setInputValues({
                   ...inputValues,
                   shippingProvider: {
@@ -280,7 +280,7 @@ function ProjectView() {
             <CheckboxField
               name="Quickmail"
               checked={inputValues.shippingProvider.isQuickmail}
-              onClick={(e) => {
+              onClick={() => {
                 setInputValues({
                   ...inputValues,
                   shippingProvider: {

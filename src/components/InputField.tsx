@@ -1,4 +1,3 @@
-import React from "react";
 import { formatNumber, unformatNumber } from "../utils/formatNumber";
 
 const InputField = ({

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Page from "../components/Page";
 import Button from "../components/Button";
 import Table from "../components/Table";

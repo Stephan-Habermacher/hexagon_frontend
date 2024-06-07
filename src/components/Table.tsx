@@ -1,4 +1,3 @@
-import React from "react";
 import { IProject } from "../types";
 import { useNavigate } from "react-router-dom";
 import { formatDate } from "../utils/formatDate";

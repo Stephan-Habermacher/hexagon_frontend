@@ -1,16 +1,11 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Page from "../components/Page";
 import InputField from "../components/InputField";
 import SelectField from "../components/SelectField";
 import Datepicker from "../components/Datepicker";
 import SupplierCard from "../components/SupplierCard";
 import OutputField from "../components/OutputField";
-import {
-  IOuterenvelope,
-  IPricelistOuterenvelopes,
-  ISupplierCard,
-  ProductTypes,
-} from "../types";
+import { IOuterenvelope, ISupplierCard, ProductTypes } from "../types";
 import { BreadcrumbContext } from "../context/BreadcrumbContext";
 import Button from "../components/Button";
 import postProductResults from "../services/postProductResults";

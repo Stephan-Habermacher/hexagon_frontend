@@ -5,10 +5,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProjectsOverviewView from "./views/ProjectsOverviewView.tsx";
 import ProjectView from "./views/ProjectView.tsx";
-import {
-  BreadcrumbContext,
-  BreadcrumbContextProvider,
-} from "./context/BreadcrumbContext.tsx";
+import { BreadcrumbContextProvider } from "./context/BreadcrumbContext.tsx";
 import ProductView from "./views/ProductView.tsx";
 import { ProductTypes } from "./types.ts";
 

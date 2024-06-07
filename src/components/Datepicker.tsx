@@ -1,12 +1,10 @@
-import React from "react";
-
 function Datepicker({
   label,
   onChange,
   value,
 }: {
   label?: string;
-  onChange: () => void;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
   value: string;
 }) {
   return (
