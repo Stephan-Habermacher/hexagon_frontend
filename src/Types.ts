@@ -52,3 +52,16 @@ export interface IPricelistOuterenvelopes {
   sortchange: number;
   price: { threshold: number; price: number }[];
 }
+
+export enum ProductTypes {
+  Versandcouvert = "outerenvelope" as any,
+  Anschreiben = "letter" as any,
+  Flyer = "flyer" as any,
+  Karten = "card" as any,
+}
+
+export interface ISupplierCard {
+  id: string;
+  name: string;
+  price: number;
+}

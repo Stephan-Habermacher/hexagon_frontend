@@ -10,6 +10,7 @@ import {
   BreadcrumbContextProvider,
 } from "./context/BreadcrumbContext.tsx";
 import ProductView from "./views/ProductView.tsx";
+import { ProductTypes } from "./types.ts";
 
 const router = createBrowserRouter([
   {
@@ -27,19 +28,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/projekt/:id/versandcouvert",
-    element: <ProductView product={"Versandcouvert"} />,
+    element: <ProductView product={ProductTypes.Versandcouvert} />,
   },
   {
     path: "/projekt/:id/anschreiben",
-    element: <ProductView product={"Anschreiben"} />,
+    element: <ProductView product={ProductTypes.Anschreiben} />,
   },
   {
     path: "/projekt/:id/flyer",
-    element: <ProductView product={"Flyer"} />,
+    element: <ProductView product={ProductTypes.Flyer} />,
   },
   {
     path: "/projekt/:id/karten",
-    element: <ProductView product={"Karten"} />,
+    element: <ProductView product={ProductTypes.Karten} />,
   },
 ]);
 
